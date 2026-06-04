@@ -31,17 +31,17 @@ const staggerChild = {
 
 // ─── App Store Button ────────────────────────────────────────────────────────
 
-function AppStoreButton({ size = 'default' }) {
+function AppStoreButton({ size = 'default', variant = 'dark' }) {
   const large = size === 'large'
   return (
     <a
       href={APP_STORE_URL}
-      className="glass-btn"
+      className={variant === 'light' ? 'glass-btn-light' : 'glass-btn'}
       style={{
         display: 'inline-flex',
         alignItems: 'center',
         gap: large ? 14 : 11,
-        color: 'var(--bg)',
+        color: variant === 'light' ? 'var(--text)' : 'var(--bg)',
         padding: large ? '16px 28px' : '13px 22px',
         borderRadius: 14,
         textDecoration: 'none',
@@ -751,7 +751,7 @@ function FinalCTA() {
           }}>
             This is the place to keep them.
           </p>
-          <AppStoreButton size="large" />
+          <AppStoreButton size="large" variant="light" />
         </motion.div>
       </div>
     </section>
