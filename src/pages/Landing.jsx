@@ -67,7 +67,7 @@ function AppStoreButton({ size = 'default' }) {
 
 function Hero() {
   return (
-    <section style={{
+    <section className="hero-section" style={{
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
@@ -86,7 +86,7 @@ function Hero() {
       className="hero-grid"
       >
         {/* Left */}
-        <div style={{ maxWidth: 600 }}>
+        <div className="hero-text" style={{ maxWidth: 600 }}>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -122,7 +122,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start' }}
+            className="hero-cta" style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start' }}
           >
             <AppStoreButton size="large" />
             <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
@@ -489,7 +489,7 @@ const FEATURES = [
 
 function Features() {
   return (
-    <section id="features" style={{ padding: '100px 24px', background: 'var(--bg)' }}>
+    <section id="features" className="section-pad" style={{ padding: '100px 24px', background: 'var(--bg)' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <motion.div {...fadeUp} style={{ marginBottom: 72, textAlign: 'center' }}>
           <h2 style={{ fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-1.5px', marginBottom: 16 }}>
@@ -578,7 +578,7 @@ function Pricing() {
   ]
 
   return (
-    <section id="pricing" style={{ padding: '100px 24px', background: 'var(--nav)' }}>
+    <section id="pricing" className="section-pad" style={{ padding: '100px 24px', background: 'var(--nav)' }}>
       <div style={{ maxWidth: 900, margin: '0 auto' }}>
         <motion.div {...fadeUp} style={{ textAlign: 'center', marginBottom: 60 }}>
           <h2 style={{ fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-1.5px', marginBottom: 16 }}>
@@ -771,7 +771,7 @@ function Footer() {
       background: 'var(--text)',
       borderTop: '1px solid rgba(255,255,255,0.06)',
     }}>
-      <div style={{
+      <div className="footer-inner" style={{
         maxWidth: 1200,
         margin: '0 auto',
         display: 'flex',

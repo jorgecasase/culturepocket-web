@@ -18,9 +18,7 @@
   --font: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
@@ -31,55 +29,99 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: var(--font); }
+img { max-width: 100%; display: block; }
 
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: var(--font);
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--subtle); border-radius: 3px; }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  /* Hero: stack vertically */
   .hero-grid {
     grid-template-columns: 1fr !important;
+    gap: 48px !important;
   }
   .hero-phone {
-    display: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    order: 2;
   }
+  .hero-text {
+    max-width: 100% !important;
+    order: 1;
+  }
+  .hero-cta {
+    align-items: flex-start !important;
+  }
+  .hero-section {
+    padding: 100px 24px 60px !important;
+    align-items: flex-start !important;
+  }
+
+  /* Features: stack */
   .features-row {
     grid-template-columns: 1fr !important;
+    gap: 32px !important;
   }
   .features-row > div {
     order: unset !important;
   }
+
+  /* Pricing: stack */
   .pricing-grid {
     grid-template-columns: 1fr !important;
   }
+
+  /* Sections: less padding */
+  .section-pad {
+    padding: 72px 24px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Navbar */
   .nav-links {
     display: none !important;
   }
+
+  /* Hero */
+  .hero-section {
+    padding: 88px 20px 48px !important;
+  }
+  .hero-cta {
+    align-items: stretch !important;
+  }
+  .hero-cta a {
+    justify-content: center !important;
+  }
+
+  /* Sections */
+  .section-pad {
+    padding: 56px 20px !important;
+  }
+
+  /* Privacy card */
   .privacy-card {
-    padding: 28px 24px !important;
+    padding: 28px 20px !important;
+  }
+
+  /* Footer */
+  .footer-inner {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 24px !important;
   }
 }
-@media (max-width: 600px) {
-  .hero-headline {
-    font-size: 44px !important;
-    letter-spacing: -1.5px !important;
+
+@media (max-width: 480px) {
+  /* Scale down phone mockup */
+  .hero-phone > div {
+    transform: scale(0.82);
+    transform-origin: top center;
   }
 }
