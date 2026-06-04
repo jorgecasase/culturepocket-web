@@ -734,7 +734,7 @@ function FinalCTA() {
     }}>
       <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
         <motion.div {...fadeUp}>
-          <img src="./icon.png" alt="Culture Pocket" style={{ width: 72, height: 72, borderRadius: 18, marginBottom: 24 }} />
+          <img src="./icon.png" alt="Culture Pocket" style={{ width: 72, height: 72, borderRadius: 18, display: 'block', margin: '0 auto 24px' }} />
           <h2 style={{
             fontSize: 'clamp(36px, 5vw, 60px)',
             fontWeight: 700,
