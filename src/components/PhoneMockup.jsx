@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { AnimatePresence, motion, useAnimationControls } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const SCREENS = [
   { src: './app/home.png',   alt: 'Culture Pocket home' },
@@ -9,133 +9,126 @@ const SCREENS = [
   { src: './app/night.png',  alt: 'Night theme' },
 ]
 
-const WARM_SHADOW = '0 0 0 1px rgba(255,255,255,0.08) inset, 0 60px 120px rgba(106,75,58,0.45), 0 24px 48px rgba(44,36,23,0.3)'
-const GLOW_SHADOW = '0 0 0 1px rgba(255,255,255,0.12) inset, 0 60px 140px rgba(106,75,58,0.7), 0 24px 60px rgba(196,168,130,0.35)'
-
 export default function PhoneMockup() {
   const [current, setCurrent] = useState(0)
-  const tiltControls = useAnimationControls()
-  const glowControls = useAnimationControls()
-
-  const transition = async (next) => {
-    glowControls.start({
-      boxShadow: GLOW_SHADOW,
-      transition: { duration: 0.25 },
-    })
-    await tiltControls.start({
-      rotateY: 18,
-      rotateZ: -2,
-      scale: 0.93,
-      y: -12,
-      transition: { duration: 0.22, ease: 'easeIn' },
-    })
-    setCurrent(next)
-    await tiltControls.start({
-      rotateY: 0,
-      rotateZ: 0,
-      scale: 1,
-      y: 0,
-      transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-    })
-    glowControls.start({
-      boxShadow: WARM_SHADOW,
-      transition: { duration: 0.6 },
-    })
-  }
 
   useEffect(() => {
     const t = setInterval(() => {
-      transition((current + 1) % SCREENS.length)
-    }, 3200)
+      setCurrent(p => (p + 1) % SCREENS.length)
+    }, 3400)
     return () => clearInterval(t)
-  }, [current])
+  }, [])
 
-  const goTo = (i) => { if (i !== current) transition(i) }
+  const goTo = (i) => setCurrent(i)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, perspective: 1200 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
 
-      {/* Float wrapper */}
+      {/* Analog breathe float */}
       <motion.div
-        animate={{ y: [0, -14, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        animate={{ y: [0, -10, 0], rotate: [-0.8, 0.8, -0.8] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        style={{ filter: 'drop-shadow(0 48px 64px rgba(44,36,23,0.38)) drop-shadow(0 16px 32px rgba(106,75,58,0.22))' }}
       >
-        {/* Tilt + glow wrapper */}
-        <motion.div
-          animate={tiltControls}
-          initial={{ rotateY: 0, rotateZ: 0, scale: 1, y: 0 }}
-          style={{ transformStyle: 'preserve-3d' }}
-        >
-          <motion.div
-            animate={glowControls}
-            initial={{ boxShadow: WARM_SHADOW }}
-            style={{
-              width: 380,
-              height: 780,
-              background: '#1C1410',
-              borderRadius: 38,
-              padding: 5,
-              position: 'relative',
-              flexShrink: 0,
-            }}
-          >
+        {/* iPhone 16 Pro frame */}
+        <div style={{
+          width: 340,
+          height: 740,
+          position: 'relative',
+          borderRadius: 52,
+          /* Titanium frame */
+          background: 'linear-gradient(145deg, #3A3530 0%, #1C1A17 40%, #2A2520 70%, #3A3530 100%)',
+          padding: '3px',
+          boxShadow: `
+            inset 0 0 0 1px rgba(255,255,255,0.12),
+            inset 0 1px 0 rgba(255,255,255,0.18),
+            0 0 0 1px rgba(0,0,0,0.6)
+          `,
+        }}>
+
+          {/* Volume buttons left */}
+          {[88, 148, 200].map((top, i) => (
+            <div key={i} style={{
+              position: 'absolute',
+              left: -3,
+              top,
+              width: 3,
+              height: i === 0 ? 36 : 52,
+              background: 'linear-gradient(to right, #2A2520, #3A3530)',
+              borderRadius: '2px 0 0 2px',
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1)',
+            }} />
+          ))}
+
+          {/* Power button right */}
+          <div style={{
+            position: 'absolute',
+            right: -3,
+            top: 160,
+            width: 3,
+            height: 72,
+            background: 'linear-gradient(to left, #2A2520, #3A3530)',
+            borderRadius: '0 2px 2px 0',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1)',
+          }} />
+
+          {/* Screen glass */}
+          <div style={{
+            width: '100%',
+            height: '100%',
+            borderRadius: 50,
+            overflow: 'hidden',
+            background: '#0A0806',
+            position: 'relative',
+          }}>
+
+            {/* Screen content */}
+            <AnimatePresence initial={false} mode="sync">
+              <motion.img
+                key={current}
+                src={SCREENS[current].src}
+                alt={SCREENS[current].alt}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'top center',
+                }}
+              />
+            </AnimatePresence>
+
             {/* Dynamic Island */}
             <div style={{
               position: 'absolute',
-              top: 12,
+              top: 14,
               left: '50%',
               transform: 'translateX(-50%)',
-              width: 72,
-              height: 20,
-              background: '#0A0806',
-              borderRadius: 12,
+              width: 120,
+              height: 34,
+              background: '#000',
+              borderRadius: 20,
               zIndex: 10,
+              boxShadow: '0 0 0 1px rgba(255,255,255,0.04)',
             }} />
 
-            {/* Reflection shine */}
+            {/* Glass reflection */}
             <div style={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: '45%',
-              borderRadius: '38px 38px 60% 60%',
-              background: 'linear-gradient(160deg, rgba(255,255,255,0.06) 0%, transparent 60%)',
-              zIndex: 20,
+              inset: 0,
+              borderRadius: 50,
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 45%)',
               pointerEvents: 'none',
+              zIndex: 20,
             }} />
 
-            {/* Screen */}
-            <div style={{
-              width: '100%',
-              height: '100%',
-              borderRadius: 34,
-              overflow: 'hidden',
-              position: 'relative',
-              background: '#F5F2E9',
-            }}>
-              <AnimatePresence initial={false} mode="sync">
-                <motion.img
-                  key={current}
-                  src={SCREENS[current].src}
-                  alt={SCREENS[current].alt}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'top center',
-                  }}
-                />
-              </AnimatePresence>
-            </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </motion.div>
 
       {/* Dots */}
