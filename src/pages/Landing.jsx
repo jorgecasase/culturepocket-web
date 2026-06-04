@@ -209,8 +209,8 @@ function Categories() {
             <motion.div
               key={name}
               {...staggerChild}
+              className="glass-card"
               style={{
-                background: 'var(--card)',
                 borderRadius: 'var(--radius-lg)',
                 padding: '32px 28px',
                 display: 'flex',
@@ -297,7 +297,7 @@ function CalendarHeatmap() {
   ]
 
   return (
-    <div style={{ padding: '24px', background: 'var(--card)', borderRadius: 16 }}>
+    <div className="glass-card" style={{ padding: '24px', borderRadius: 16 }}>
       <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 12 }}>
         Activity, 2024
       </div>
@@ -412,7 +412,7 @@ const FEATURES = [
     headline: 'For whoever you are today.',
     body: 'Warm and analog for Sunday afternoons in a bookshop. Dark and focused for late-night reading sessions. Soft rose for the romantics. Lidia Blue, for my love. Tactical Green for the ones who wear field watches, read topographic maps, and treat their backlog like a mission log. The app becomes yours.',
     visual: (
-      <div style={{ padding: '24px', background: 'var(--card)', borderRadius: 16 }}>
+      <div className="glass-card" style={{ padding: '24px', borderRadius: 16 }}>
         <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 20 }}>Available themes</div>
         <ThemeSwatches />
       </div>
@@ -423,7 +423,7 @@ const FEATURES = [
     headline: 'Yours. Just yours.',
     body: 'No account. No cloud you didn\'t ask for. No one looking at what you read. Your archive lives on your phone, quiet and private, the way a personal journal should.',
     visual: (
-      <div style={{ padding: '32px 24px', background: 'var(--card)', borderRadius: 16, display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <div className="glass-card" style={{ padding: '32px 24px', borderRadius: 16, display: 'flex', flexDirection: 'column', gap: 20 }}>
         {[
           { Icon: Lock,  text: 'No account required', sub: 'Your data, only yours' },
           { Icon: Zap,   text: 'Instant load, always', sub: 'Fully offline capable' },
@@ -452,7 +452,7 @@ const FEATURES = [
     headline: 'Ten years from now, it\'s still there.',
     body: 'That novel you read in 2019. The film you saw on a flight. The game you finished at 3am. Search once, find it. Your archive grows with you and never gets in the way.',
     visual: (
-      <div style={{ padding: '24px', background: 'var(--card)', borderRadius: 16 }}>
+      <div className="glass-card" style={{ padding: '24px', borderRadius: 16 }}>
         <div style={{
           background: 'var(--nav)',
           borderRadius: 10,
@@ -601,8 +601,8 @@ function Pricing() {
           {/* Free */}
           <motion.div
             {...staggerChild}
+            className="glass-card"
             style={{
-              background: 'var(--card)',
               borderRadius: 'var(--radius-lg)',
               padding: '36px 32px',
             }}
