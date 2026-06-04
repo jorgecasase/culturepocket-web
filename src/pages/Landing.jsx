@@ -36,20 +36,17 @@ function AppStoreButton({ size = 'default' }) {
   return (
     <a
       href={APP_STORE_URL}
+      className="glass-btn"
       style={{
         display: 'inline-flex',
         alignItems: 'center',
         gap: large ? 14 : 11,
-        background: 'var(--text)',
         color: 'var(--bg)',
         padding: large ? '16px 28px' : '13px 22px',
         borderRadius: 14,
         textDecoration: 'none',
-        transition: 'opacity 0.2s',
         flexShrink: 0,
       }}
-      onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-      onMouseLeave={e => e.currentTarget.style.opacity = '1'}
     >
       <svg width={large ? 24 : 20} height={large ? 29 : 24} viewBox="0 0 24 29" fill="currentColor">
         <path d="M17.05 15.39c-.03-3.2 2.62-4.74 2.74-4.82-1.5-2.19-3.82-2.49-4.64-2.52-1.97-.2-3.85 1.16-4.85 1.16-1 0-2.54-1.13-4.18-1.1-2.14.03-4.12 1.25-5.22 3.16-2.24 3.87-.57 9.6 1.6 12.74 1.07 1.54 2.33 3.26 3.99 3.2 1.61-.07 2.22-1.03 4.17-1.03 1.94 0 2.5 1.03 4.2 1 1.73-.03 2.82-1.56 3.87-3.11a15.6 15.6 0 001.75-3.6c-.04-.02-3.39-1.3-3.43-5.08z"/>
