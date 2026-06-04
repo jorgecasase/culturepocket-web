@@ -30,8 +30,8 @@ export default function PhoneMockup() {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
       {/* Phone frame */}
       <div style={{
-        width: 260,
-        height: 540,
+        width: 320,
+        height: 660,
         background: '#1C1410',
         borderRadius: 38,
         padding: 5,

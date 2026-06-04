@@ -92,12 +92,12 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              fontSize: 'clamp(42px, 6vw, 72px)',
+              fontSize: 'clamp(52px, 7vw, 96px)',
               fontWeight: 700,
               color: 'var(--text)',
-              letterSpacing: '-2px',
-              lineHeight: 1.05,
-              marginBottom: 24,
+              letterSpacing: '-3px',
+              lineHeight: 1.02,
+              marginBottom: 28,
             }}
           >
             Your personal<br />archive of<br />culture.
@@ -108,11 +108,11 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
             style={{
-              fontSize: 18,
+              fontSize: 20,
               color: 'var(--text-secondary)',
               lineHeight: 1.7,
               marginBottom: 40,
-              maxWidth: 460,
+              maxWidth: 500,
             }}
           >
             For people who finish what they start. Who collect stories. Who remember the book that changed them and want to find the next one.
