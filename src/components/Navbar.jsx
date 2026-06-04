@@ -54,8 +54,8 @@ export default function Navbar() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 32 }} className="nav-links">
           {!isPrivacy && (
             <>
-              <NavLink href="#features">Features</NavLink>
-              <NavLink href="#pricing">Pricing</NavLink>
+              <NavLink to="features">Features</NavLink>
+              <NavLink to="pricing">Pricing</NavLink>
             </>
           )}
           <Link
@@ -94,10 +94,15 @@ export default function Navbar() {
   )
 }
 
-function NavLink({ href, children }) {
+function NavLink({ to, children }) {
+  const handleClick = (e) => {
+    e.preventDefault()
+    document.getElementById(to)?.scrollIntoView({ behavior: 'smooth' })
+  }
   return (
     <a
-      href={href}
+      href={`#${to}`}
+      onClick={handleClick}
       style={{
         fontSize: 14,
         color: 'var(--text-secondary)',
