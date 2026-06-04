@@ -703,11 +703,10 @@ function Languages() {
             justifyContent: 'center',
           }}>
             {LANGUAGES.map(({ flag, name }) => (
-              <div key={name} style={{
+              <div key={name} className="glass-card" style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: 8,
-                background: 'var(--card)',
                 borderRadius: 10,
                 padding: '10px 16px',
                 fontSize: 14,
