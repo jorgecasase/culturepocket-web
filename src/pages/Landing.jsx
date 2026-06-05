@@ -6,6 +6,7 @@ import {
   BookOpen, Film, Tv, Gamepad2,
   Lock, Zap, Cloud, Search,
 } from 'lucide-react'
+import ReactCountryFlag from 'react-country-flag'
 
 const APP_STORE_URL = '#appstore'
 
@@ -671,15 +672,15 @@ function Pricing() {
 // ─── Languages ───────────────────────────────────────────────────────────────
 
 const LANGUAGES = [
-  { flag: '🇬🇧', name: 'English' },
-  { flag: '🇪🇸', name: 'Español' },
-  { flag: '🇫🇷', name: 'Français' },
-  { flag: '🇩🇪', name: 'Deutsch' },
-  { flag: '🇵🇹', name: 'Português' },
-  { flag: '🇮🇹', name: 'Italiano' },
-  { flag: '🇯🇵', name: '日本語' },
-  { flag: '🇨🇳', name: '中文' },
-  { flag: '🇰🇷', name: '한국어' },
+  { code: 'GB', name: 'English',   author: 'Shakespeare' },
+  { code: 'ES', name: 'Español',   author: 'Cervantes' },
+  { code: 'FR', name: 'Français',  author: 'Victor Hugo' },
+  { code: 'DE', name: 'Deutsch',   author: 'Goethe' },
+  { code: 'PT', name: 'Português', author: 'Pessoa' },
+  { code: 'IT', name: 'Italiano',  author: 'Dante' },
+  { code: 'JP', name: '日本語',    author: 'Murakami' },
+  { code: 'CN', name: '中文',      author: 'Lu Xun' },
+  { code: 'KR', name: '한국어',    author: 'Han Kang' },
 ]
 
 function Languages() {
@@ -699,18 +700,25 @@ function Languages() {
             gap: 12,
             justifyContent: 'center',
           }}>
-            {LANGUAGES.map(({ flag, name }) => (
+            {LANGUAGES.map(({ code, name, author }) => (
               <div key={name} className="glass-card" style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 8,
+                gap: 10,
                 borderRadius: 10,
                 padding: '10px 16px',
                 fontSize: 14,
                 color: 'var(--text-secondary)',
               }}>
-                <span style={{ fontSize: 18 }}>{flag}</span>
-                {name}
+                <ReactCountryFlag
+                  countryCode={code}
+                  svg
+                  style={{ width: 20, height: 15, borderRadius: 2, flexShrink: 0 }}
+                  aria-label={name}
+                />
+                <span style={{ fontWeight: 500, color: 'var(--text)' }}>{name}</span>
+                <span style={{ color: 'var(--subtle)', fontSize: 12 }}>·</span>
+                <span style={{ fontSize: 13, fontStyle: 'italic' }}>{author}</span>
               </div>
             ))}
           </div>
