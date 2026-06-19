@@ -7,6 +7,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const isPrivacy = location.pathname === '/privacy'
+  const isSupport = location.pathname === '/support'
+  const isStaticPage = isPrivacy || isSupport
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -52,7 +54,7 @@ export default function Navbar() {
         </Link>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 32 }} className="nav-links">
-          {!isPrivacy && (
+          {!isStaticPage && (
             <>
               <NavLink to="features">Features</NavLink>
               <NavLink to="pricing">Pricing</NavLink>
@@ -70,7 +72,19 @@ export default function Navbar() {
           >
             Privacy
           </Link>
-          {!isPrivacy && (
+          <Link
+            to="/support"
+            style={{
+              fontSize: 14,
+              color: 'var(--text-secondary)',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={e => e.target.style.color = 'var(--text)'}
+            onMouseLeave={e => e.target.style.color = 'var(--text-secondary)'}
+          >
+            Support
+          </Link>
+          {!isStaticPage && (
             <a
               href={APP_STORE_URL}
               style={{
