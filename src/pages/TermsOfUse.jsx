@@ -2,51 +2,34 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar.jsx'
 
-const supportEmail = 'jorgecasase@gmail.com'
-
 const sections = [
   {
+    title: 'Culture Pocket Pro Lifetime',
+    body: 'Culture Pocket Pro Lifetime is a one-time purchase that permanently unlocks the Pro features included in the app at the time of purchase, including premium themes and other local Pro functionality.',
+  },
+  {
+    title: 'Cloud Synchronization',
+    body: 'Cloud synchronization is an online service provided as part of Culture Pocket Pro while available. It may be modified, suspended, or discontinued for operational, security, legal, or technical reasons.',
+  },
+  {
+    title: 'Service Changes',
+    body: 'Where reasonably possible, we will provide prior notice and an option to export synced data before discontinuing cloud synchronization. Discontinuation of cloud synchronization does not revoke access to the permanent local Pro features unlocked by Culture Pocket Pro Lifetime.',
+  },
+  {
+    title: 'Account and Data',
+    body: 'Cloud synchronization requires an account. You are responsible for keeping your account credentials secure. To request deletion of your account or synced data, contact support from the email address associated with your account.',
+  },
+  {
+    title: 'Changes to These Terms',
+    body: 'We may update these Terms of Use to reflect changes to Culture Pocket or applicable law. The current version will be published on this page.',
+  },
+  {
     title: 'Contact',
-    body: (
-      <p>
-        For help with Culture Pocket, email{' '}
-        <a href={`mailto:${supportEmail}`}>{supportEmail}</a>. Please include your device model,
-        iOS version, and a short description of the issue.
-      </p>
-    ),
-  },
-  {
-    title: 'Purchases and Restore',
-    body: (
-      <p>
-        Culture Pocket Pro Lifetime is a one-time in-app purchase. If you already purchased Pro,
-        open the Pro screen and use restore purchases. Apple handles payment information directly;
-        Culture Pocket does not receive card or bank details.
-      </p>
-    ),
-  },
-  {
-    title: 'Cloud Sync',
-    body: (
-      <p>
-        Cloud sync requires a Culture Pocket Pro purchase and a Supabase account. If sync fails,
-        check that you are signed in with the same account used after purchase verification.
-      </p>
-    ),
-  },
-  {
-    title: 'Account and Data Deletion',
-    body: (
-      <p>
-        To request deletion of your account or synced data, contact{' '}
-        <a href={`mailto:${supportEmail}`}>{supportEmail}</a> from the email address associated
-        with your account.
-      </p>
-    ),
+    body: 'For questions about these Terms of Use, contact jorgecasase@gmail.com.',
   },
 ]
 
-export default function Support() {
+export default function TermsOfUse() {
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
       <Navbar />
@@ -69,11 +52,7 @@ export default function Support() {
             fontSize: 13,
             color: 'var(--text-secondary)',
             marginBottom: 24,
-            transition: 'color 0.2s',
-          }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--text)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-          >
+          }}>
             ← Culture Pocket
           </Link>
           <h1 style={{
@@ -83,10 +62,10 @@ export default function Support() {
             color: 'var(--text)',
             marginBottom: 12,
           }}>
-            Support
+            Terms of Use
           </h1>
           <p style={{ fontSize: 14, color: 'var(--text-secondary)' }}>
-            Culture Pocket · Help and contact
+            Culture Pocket · Effective date: June 24, 2026
           </p>
         </motion.div>
       </div>
@@ -98,12 +77,12 @@ export default function Support() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <div
+            className="privacy-card"
             style={{
               background: 'var(--card)',
               borderRadius: 'var(--radius-lg)',
               padding: '40px 48px',
             }}
-            className="privacy-card"
           >
             {sections.map(({ title, body }, index) => (
               <section key={title} style={{
@@ -124,16 +103,13 @@ export default function Support() {
                 }}>
                   {title}
                 </h2>
-                <div className="privacy-content" style={{
+                <p style={{
                   fontSize: 15,
                   color: 'var(--text-secondary)',
                   lineHeight: 1.75,
                 }}>
-                  <style>{`
-                    .privacy-content a { color: var(--accent-book); text-decoration: underline; text-underline-offset: 3px; }
-                  `}</style>
                   {body}
-                </div>
+                </p>
               </section>
             ))}
           </div>
@@ -147,7 +123,7 @@ export default function Support() {
         fontSize: 13,
         color: 'var(--text-secondary)',
       }}>
-        <p>© 2026 Culture Pocket · All rights reserved · <Link to="/privacy" style={{ color: 'var(--accent-book)' }}>Privacy Policy</Link> · <Link to="/terms" style={{ color: 'var(--accent-book)' }}>Terms of Use</Link></p>
+        <p>© 2026 Culture Pocket · All rights reserved · <Link to="/privacy" style={{ color: 'var(--accent-book)' }}>Privacy Policy</Link> · <Link to="/support" style={{ color: 'var(--accent-book)' }}>Support</Link></p>
       </footer>
     </div>
   )

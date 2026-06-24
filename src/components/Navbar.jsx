@@ -8,7 +8,8 @@ export default function Navbar() {
   const location = useLocation()
   const isPrivacy = location.pathname === '/privacy'
   const isSupport = location.pathname === '/support'
-  const isStaticPage = isPrivacy || isSupport
+  const isTerms = location.pathname === '/terms'
+  const isStaticPage = isPrivacy || isSupport || isTerms
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -83,6 +84,18 @@ export default function Navbar() {
             onMouseLeave={e => e.target.style.color = 'var(--text-secondary)'}
           >
             Support
+          </Link>
+          <Link
+            to="/terms"
+            style={{
+              fontSize: 14,
+              color: 'var(--text-secondary)',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={e => e.target.style.color = 'var(--text)'}
+            onMouseLeave={e => e.target.style.color = 'var(--text-secondary)'}
+          >
+            Terms
           </Link>
           {!isStaticPage && (
             <a
